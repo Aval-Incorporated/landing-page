@@ -219,6 +219,10 @@ p{
     padding-left: 20px;
     align-items: flex-start;
 }
+.products .prod button a{
+    color: #fff;
+    text-decoration: none;
+}
 .products .prod .desc{
     width: calc(100% - 600px);
     line-height: 1.6;
@@ -536,6 +540,11 @@ footer hr{
     }
     .ourStory{
         width: 90%;
+    }
+}
+@media (max-width: 900px) {
+    .products .logo{
+        display: none;
     }
 }
 @media (max-width: 807px) {
