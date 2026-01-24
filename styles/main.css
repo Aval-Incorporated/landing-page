@@ -21,6 +21,7 @@
 }
 body{
     overflow-x: hidden;
+    background-color: #E5E7EB;
 }
 .container .header{
     position: fixed;
