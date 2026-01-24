@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="apple-touch-icon" sizes="180x180" href="../icons/aval/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../icons/aval/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../icons/aval/favicon-16x16.png">
+  <link rel="manifest" href="assets/icons/aval/site.webmanifest">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Campaignity – Join the Waitlist</title>
+  <meta name="description" content="Campaignity helps founders, marketers, and teams analyze and optimize campaigns with clarity. Join the waitlist." />
+
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #ffffff;
+      --fg: #0f0f0f;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+      --accent: #0f172a;
+      --accent-soft: #f1f5f9;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--fg);
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 32px 20px;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 80px;
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 18px;
+      letter-spacing: -0.02em;
+    }
+
+    main {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    h1 {
+      font-size: 48px;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin-bottom: 20px;
+    }
+
+    .subtitle {
+      font-size: 18px;
+      color: var(--muted);
+      max-width: 520px;
+      margin-bottom: 32px;
+    }
+
+    .features {
+      display: grid;
+      gap: 12px;
+      margin-bottom: 40px;
+    }
+
+    .feature {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 15px;
+    }
+
+    .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .card {
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px;
+      background: #ffffff;
+    }
+
+    .card h2 {
+      font-size: 22px;
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 24px;
+    }
+
+    form {
+      display: grid;
+      gap: 14px;
+    }
+
+    input {
+      width: 100%;
+      padding: 14px 16px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      font-size: 15px;
+      outline: none;
+    }
+
+    input:focus {
+      border-color: var(--accent);
+    }
+
+    button {
+      padding: 14px 16px;
+      border-radius: 10px;
+      border: none;
+      background: var(--accent);
+      color: #ffffff;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    button:hover {
+      opacity: 0.95;
+    }
+
+    .privacy {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 8px;
+    }
+
+    footer {
+      margin-top: 100px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .subbed div{
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      font-weight: 500;
+      transform: translate(-50%, -50%);
+    }
+    .overlay{
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 0; 
+      right: 0;
+      backdrop-filter: blur(4px);
+      display: none
+    }
+    .overlay.active{
+      display: block;
+    }
+    @media (max-width: 900px) {
+      main {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+
+      h1 {
+        font-size: 40px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo">Campaignity</div>
+    </header>
+
+    <main>
+      <!-- Left Content -->
+      <section>
+        <h1>Clarity for your campaigns.</h1>
+        <p class="subtitle">
+          Campaignity helps founders, marketers, freelancers, and teams analyze underperforming campaigns, uncover inefficiencies, and make smarter decisions — without noise or guesswork.
+        </p>
+
+        <div class="features">
+          <div class="feature"><span class="dot"></span> Automated campaign performance analysis</div>
+          <div class="feature"><span class="dot"></span> Intelligent detection of inefficiencies</div>
+          <div class="feature"><span class="dot"></span> Actionable insights generated with minimal input</div>
+          <div class="feature"><span class="dot"></span> Built for founders, agencies, and operators</div>
+        </div>
+      </section>
+
+      <!-- Right Card -->
+      <section class="card">
+        <h2>Join the waitlist</h2>
+        <p>Be among the first to access Campaignity when we launch.</p>
+
+        <form>
+          <input type="text" placeholder="Full name" id="full_name" required />
+          <input type="email" placeholder="Email address" id="email" required />
+          <button type="submit">Request early access</button>
+        </form>
+
+        <div class="privacy">
+          No spam. We’ll only email you about Campaignity updates.
+        </div>
+      </section>
+    </main>
+  </div>
+  <div class="overlay"></div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+  const createCli = window.supabase.createClient("https://tnbdgppzrhemykfewekl.supabase.co", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRuYmRncHB6cmhlbXlrZmV3ZWtsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjM4MDEyOTgsImV4cCI6MjA3OTM3NzI5OH0.PYfBpxx9-2_mNU9A_VXVOFXS4dmBJ9XcqLbwldnzheM")
+  const overlay = document.querySelector('.overlay')
+  document.querySelector('form').addEventListener('submit', async (e) => {
+    e.preventDefault()
+    const name = document.getElementById('full_name')
+    const email = document.getElementById('email')
+
+    overlay.classList.add('active')
+    const {data, error} = await createCli.from('waitlist').insert({name: name.value, email: email.value})
+
+    if(error) console.log(error.message)
+    else{
+      overlay.classList.remove('active')
+      const el = `<div> Congratualtions, you are now on the waitlist </div>`
+      document.querySelector('main').classList.add('subbed')
+      document.querySelector('main').innerHTML = el
+      
+    }
+  })
+</script>
+</html>
