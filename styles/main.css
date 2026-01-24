@@ -546,6 +546,9 @@ footer hr{
     .products .logo{
         display: none;
     }
+    .products .prod .desc{
+        width: 100%;
+    }
 }
 @media (max-width: 807px) {
     .content .main{
