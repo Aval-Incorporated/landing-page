@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="apple-touch-icon" sizes="180x180" href="../icons/aval/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../icons/aval/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../icons/aval/favicon-16x16.png">
+  <link rel="manifest" href="assets/icons/aval/site.webmanifest">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Campaignity – Clarity for Your Campaigns</title>
+  <meta name="description" content="Campaignity helps founders, marketers, and teams analyze and optimize campaigns with clarity." />
+
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #faf9f7;
+      --fg: #FDA837;
+      --muted: #8a8780;
+      --border: #e4e2dd;
+      --accent: #FDA837;
+      --accent-tp: #fda7371c;
+      --card-bg: #ffffff;
+      --tag-bg: #fda7371c;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--fg);
+      line-height: 1.5;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Subtle grain texture */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.4;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 36px 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 100px;
+      animation: fadeDown 0.6s ease both;
+    }
+
+    .logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 20px;
+      letter-spacing: -0.03em;
+      color: var(--fg);
+    }
+
+    .logo span {
+      display: inline-block;
+      width: 7px;
+      height: 7px;
+      background: var(--accent);
+      border-radius: 50%;
+      margin-left: 2px;
+      vertical-align: super;
+    }
+
+    .nav-tag {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      background: var(--tag-bg);
+      padding: 6px 14px;
+      border-radius: 100px;
+      border: 1px solid var(--border);
+    }
+
+    /* Main layout */
+    main {
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 80px;
+      align-items: start;
+    }
+
+    /* Left */
+    .left {
+      animation: fadeUp 0.7s ease 0.1s both;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 28px;
+    }
+
+    .eyebrow-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: 58px;
+      font-weight: 800;
+      line-height: 1.0;
+      letter-spacing: -0.04em;
+      margin-bottom: 24px;
+      color: var(--fg);
+    }
+
+    h1 em {
+      font-style: normal;
+      position: relative;
+      display: inline-block;
+    }
+
+    h1 em::after {
+      content: '';
+      position: absolute;
+      bottom: 4px;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--accent);
+      border-radius: 2px;
+      transform: scaleX(0);
+      transform-origin: left;
+      animation: underlineIn 0.5s ease 0.9s forwards;
+    }
+
+    .subtitle {
+      font-size: 17px;
+      color: var(--muted);
+      max-width: 480px;
+      margin-bottom: 52px;
+      line-height: 1.65;
+      font-weight: 300;
+    }
+
+    .features {
+      display: grid;
+      gap: 0;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      background: var(--card-bg);
+    }
+
+    .feature {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 16px 20px;
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--fg);
+      border-bottom: 1px solid var(--border);
+      transition: background 0.15s ease;
+    }
+
+    .feature:last-child { border-bottom: none; }
+
+    .feature:hover { background: var(--tag-bg); }
+
+    .feature-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background: var(--tag-bg);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 13px;
+    }
+
+    /* Right card */
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 36px;
+      position: sticky;
+      top: 36px;
+      animation: fadeUp 0.7s ease 0.2s both;
+    }
+
+    .card-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+
+    .card h2 {
+      font-family: 'Syne', sans-serif;
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin-bottom: 10px;
+      line-height: 1.2;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 32px;
+      line-height: 1.6;
+      font-weight: 300;
+    }
+
+    .cta-btn {
+      display: block;
+      width: 100%;
+      padding: 16px 20px;
+      border-radius: 12px;
+      border: none;
+      background: var(--accent);
+      color: #0c0c0b;
+      font-family: 'Syne', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      transition: opacity 0.15s ease, transform 0.15s ease;
+    }
+
+    .cta-btn:hover {
+      opacity: 0.88;
+      transform: translateY(-1px);
+    }
+
+    .cta-btn:active {
+      transform: translateY(0);
+    }
+
+    .divider {
+      height: 1px;
+      background: var(--border);
+      margin: 28px 0;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .stat {
+      padding: 16px;
+      background: var(--tag-bg);
+      border-radius: 10px;
+      border: 1px solid var(--border);
+    }
+
+    .stat-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 2px;
+    }
+
+    .stat-label {
+      font-size: 11px;
+      color: var(--muted);
+      font-weight: 400;
+      letter-spacing: 0.02em;
+    }
+
+    /* Footer */
+    footer {
+      margin-top: 120px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      color: var(--muted);
+      animation: fadeUp 0.6s ease 0.4s both;
+    }
+
+    footer a {
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    footer a:hover { color: var(--fg); }
+
+    .footer-links { display: flex; gap: 20px; }
+
+    /* Animations */
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes underlineIn {
+      to { transform: scaleX(1); }
+    }
+
+    /* Responsive */
+    @media (max-width: 860px) {
+      main {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+
+      h1 { font-size: 42px; }
+
+      .card { position: static; }
+
+      header { margin-bottom: 60px; }
+    }
+
+    @media (max-width: 480px) {
+      h1 { font-size: 34px; }
+      .stats { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo">Campaignity<span></span></div>
+      <div class="nav-tag">Coming Soon</div>
+    </header>
+
+    <main>
+      <section class="left">
+        <div class="eyebrow">
+          <span class="eyebrow-dot"></span>
+          Marketing Intelligence Platform
+        </div>
+
+        <h1>Clarity for your <em>campaigns</em>.</h1>
+
+        <p class="subtitle">
+          Campaignity helps founders, marketers, freelancers, and teams manage campaigns, detect underperforming campaigns, uncover inefficiencies, and make smarter decisions — without noise or guesswork.
+        </p>
+
+        <div class="features">
+          <div class="feature">
+            <div class="feature-icon">📊</div>
+            Automated campaign performance analysis
+          </div>
+          <div class="feature">
+            <div class="feature-icon">🔍</div>
+            Intelligent detection of inefficiencies
+          </div>
+          <div class="feature">
+            <div class="feature-icon">⚡</div>
+            Actionable insights with minimal input
+          </div>
+          <div class="feature">
+            <div class="feature-icon">🏢</div>
+            Built for founders, agencies, and operators
+          </div>
+        </div>
+      </section>
+
+      <aside class="card">
+        <div class="card-label">Get Started</div>
+        <h2>Your campaigns, finally clear.</h2>
+        <p>Stop guessing why your campaigns underperform. Campaignity gives you the clarity to act fast and spend smart.</p>
+
+        <a href="https://campaignity.vercel.app" class="cta-btn">Go To Campaignity →</a>
+
+        <div class="divider"></div>
+
+        <div class="stats">
+          <div class="stat">
+            <div class="stat-num">3x</div>
+            <div class="stat-label">Faster insights</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">AI</div>
+            <div class="stat-label">Powered analysis</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">0</div>
+            <div class="stat-label">Guesswork needed</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">∞</div>
+            <div class="stat-label">Campaigns supported</div>
+          </div>
+        </div>
+      </aside>
+    </main>
+
+    <footer>
+      <span>© 2026 Aval Inc.</span>
+      <div class="footer-links">
+        <a href="/products/campaignity/privacy">Privacy</a>
+        <a href="/products/campaignity/terms">Terms</a>
+        <a href="/cdn-cgi/l/email-protection#aedddbdedec1dcdaeecdcfc3decfc7c9c0c7dad780cfc7">Contact</a>
+      </div>
+      </footer>
+      </div>
+      </body>
+      </html>

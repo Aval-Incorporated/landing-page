@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16x16.png">
+  <link rel="manifest" href="assets/icons/site.webmanifest">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms of Service — Campaignity</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --orange: #FDA837;
+      --orange-tp: #fda7371c;
+      --dark: #1a1a1a;
+      --body-bg: #fafaf9;
+      --text: #333;
+      --muted: #777;
+      --border: #e8e5e0;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--body-bg);
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      color: var(--text);
+      line-height: 1.75;
+    }
+
+    /* Header */
+    header {
+      background: var(--dark);
+      padding: 48px 24px 40px;
+      text-align: center;
+    }
+
+    header .logo {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 16px;
+    }
+
+    header h1 {
+      font-size: 28px;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+
+    header p {
+      font-size: 13px;
+      color: #888;
+    }
+
+    /* Progress */
+    #progress {
+      height: 3px;
+      width: 0%;
+      background: var(--orange);
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 100;
+      transition: width 0.1s linear;
+    }
+
+    /* Main */
+    main {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 56px 24px 80px;
+    }
+
+    /* Intro */
+    .intro {
+      background: var(--orange-tp);
+      border-left: 3px solid var(--orange);
+      padding: 16px 20px;
+      border-radius: 0 6px 6px 0;
+      margin-bottom: 48px;
+      font-size: 14px;
+      color: #555;
+    }
+
+    /* Section */
+    .section {
+      margin-bottom: 40px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section:last-of-type { border-bottom: none; }
+
+    .section-num {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 6px;
+    }
+
+    .section h2 {
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 14px;
+    }
+
+    .section h3 {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--dark);
+      margin: 20px 0 8px;
+    }
+
+    .section p {
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 10px;
+    }
+
+    .section ul {
+      list-style: none;
+      margin: 8px 0 12px;
+    }
+
+    .section ul li {
+      font-size: 14px;
+      color: #555;
+      padding: 4px 0 4px 18px;
+      position: relative;
+    }
+
+    .section ul li::before {
+      content: '';
+      width: 5px;
+      height: 5px;
+      background: var(--orange);
+      border-radius: 50%;
+      position: absolute;
+      left: 0;
+      top: 12px;
+    }
+
+    .note {
+      background: var(--orange-tp);
+      border-left: 3px solid var(--orange);
+      padding: 12px 16px;
+      border-radius: 0 6px 6px 0;
+      font-size: 13.5px;
+      color: #555;
+      margin: 14px 0;
+    }
+
+    a { color: var(--orange); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Contact */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    @media (max-width: 480px) { .contact-grid { grid-template-columns: 1fr; } }
+
+    .contact-item {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px 14px;
+    }
+
+    .contact-item span {
+      display: block;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 3px;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 24px;
+      font-size: 12.5px;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+    }
+  </style>
+</head>
+<body>
+
+<div id="progress"></div>
+
+<header>
+  <div class="logo">Campaignity</div>
+  <h1>Terms of Service</h1>
+  <p>Effective March 8, 2026 &nbsp;·&nbsp; Aval Inc. &nbsp;·&nbsp; Delaware, USA</p>
+</header>
+
+<main>
+
+  <div class="intro">
+    Hey, welcome to Campaignity! We've written these in plain English so you know exactly what you're agreeing to. Got questions? We're always at <a href="mailto:support@campaignity.com">support@campaignity.com</a>. One thing upfront: you need to be at least 18 years old to use Campaignity.
+  </div>
+
+  <div class="section">
+    <div class="section-num">01</div>
+    <h2>Who we are</h2>
+    <p>Campaignity is built and operated by Aval Inc., a company incorporated in Delaware, United States. We're a remote team building marketing tools that work for everyone — not just enterprise teams with huge budgets.</p>
+    <p>When we say "we" or "Campaignity," that's us. When we say "you," we mean you — whether you're a solo creator, a growing startup, or a full-scale agency.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-num">02</div>
+    <h2>Your account</h2>
+    <p>To use Campaignity, you'll create an account. A few things about that:</p>
+    <ul>
+      <li>Use real, accurate information when signing up.</li>
+      <li>Keep your password safe — you're responsible for everything that happens on your account.</li>
+      <li>Spot something suspicious? Let us know at <a href="mailto:support@campaignity.com">support@campaignity.com</a>.</li>
+    </ul>
+    <p>If you're signing up on behalf of a company, you're confirming you have authority to accept these Terms for them.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-num">03</div>
+    <h2>Subscriptions &amp; billing</h2>
+    <h3>Plans &amp; pricing</h3>
+    <p>We offer Starter, Business, and Agency plans. Details are on our Pricing page. If we raise prices, you'll get at least 14 days' notice before it affects your subscription.</p>
+    <h3>How billing works</h3>
+    <p>Subscriptions renew automatically — monthly or annually. By entering your payment details, you're authorizing us to charge your card on that schedule. All prices are in USD, excluding taxes.</p>
+    <h3>Free trials</h3>
+    <p>We'll always remind you before a trial ends. If you don't cancel, it converts to a paid plan automatically.</p>
+    <h3>Cancellations &amp; refunds</h3>
+    <p>Cancel anytime from account settings. You keep access until the billing period ends. Billing errors? Email <a href="mailto:billing@campaignity.com">billing@campaignity.com</a> within 30 days.</p>
+    <h3>Taxes</h3>
+    <p>Prices exclude sales tax, VAT, or other levies — these may be added at checkout depending on your location.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-num">04</div>
+    <h2>What you can (and can't) do</h2>
+    <p>Please don't use Campaignity to:</p>
+    <ul>
+      <li>Send spam or bulk emails that break CAN-SPAM, GDPR, TCPA, or other anti-spam laws</li>
+      <li>Run illegal or deceptive marketing campaigns</li>
+      <li>Distribute phishing content, malware, or anything harmful</li>
+      <li>Impersonate anyone</li>
+      <li>Try to break into systems or accounts that aren't yours</li>
+      <li>Scrape platform data without permission</li>
+      <li>Infringe on anyone's intellectual property</li>
+      <li>Do anything that could get Campaignity's infrastructure blacklisted</li>
+    </ul>
+    <p>Serious violations may result in immediate account suspension.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-num">05</div>
+    <h2>Your content</h2>
+    <p>Everything you create on Campaignity — campaigns, copy, creatives — is yours. We don't claim ownership. You give us a limited license to store and process it solely to run the platform.</p>
+    <p>You're responsible for ensuring your campaigns comply with the law. Campaignity doesn't review content for legal compliance and can't guarantee specific results.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-num">06</div>
+    <h2>Copyright &amp; DMCA</h2>
+    <p>If you believe something on Campaignity infringes your copyright, send a DMCA notice to <a href="mailto:legal@campaignity.com">legal@campaignity.com</a> with:</p>
+    <ul>
+      <li>A description of the copyrighted work you believe was infringed</li>
+      <li>Where the infringing material is on our platform</li>
+      <li>Your contact information</li>
+      <li>A good-faith statement that you believe the use is unauthorized</li>
+      <li>A statement, under penalty of perjury, that your notice is accurate</li>
+    </ul>
+    <p>We'll act promptly and notify the relevant user, who may submit a counter-notice if they believe it was a mistake.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-num">07</div>
+    <h2>AI-powered tools</h2>
+    <p>Some plans include AI tools to help you write and optimize faster. A few things to know:</p>
+    <ul>
+      <li>AI tools are only on plans that include them.</li>
+      <li>AI output is a starting point — always review before publishing.</li>
+      <li>Don't enter sensitive personal info into AI prompts.</li>
+      <li>AI content can carry legal risks. You're responsible for how you use it.</li>
+      <li>Your identifiable prompts won't be shared with third parties.</li>
+      <li>We may use anonymized data to improve AI features over time.</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <div class="section-num">08</div>
+    <h2>Third-party integrations</h2>
+    <p>Campaignity connects with ad platforms, analytics tools, email services, and more. What you should know:</p>
+    <ul>
+      <li>Third-party services have their own terms and privacy policies — please review them.</li>
+      <li>Connecting an integration authorizes us to exchange data on your behalf. Disconnect anytime.</li>
+      <li>Outages or incidents from third-party services are outside our control.</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <div class="section-num">09</div>
+    <h2>Our platform &amp; IP</h2>
+    <p>Campaignity — the software, design, name, and logo — belongs to Aval Inc. Your subscription is a license to use it, not ownership. Please don't copy, reverse-engineer, or resell any part of the platform.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-num">10</div>
+    <h2>Beta features</h2>
+    <p>Experimental features are provided as-is. They may change or disappear without notice. Don't rely on them for mission-critical work.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-num">11</div>
+    <h2>Uptime &amp; maintenance</h2>
+    <p>We aim for high reliability, but outages can happen — planned maintenance, infrastructure issues, or things outside our control. We'll give advance notice for planned downtime when we can.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-num">12</div>
+    <h2>Your data &amp; privacy</h2>
+    <h3>Privacy Policy</h3>
+    <p>How we collect and use your data is in our <a href="https://campaignity.com/privacy">Privacy Policy</a>. Please read both documents together.</p>
+    <h3>We don't sell your data</h3>
+    <p>Our business runs on subscriptions — not on selling your personal information.</p>
+    <h3>Data breach notification</h3>
+    <p>If a breach involves your personal data, we'll notify you as required by applicable U.S. state laws via the email on your account.</p>
+    <h3>Data after you leave</h3>
+    <p>After account deletion, we hold your data up to 30 days then permanently delete it. Need it gone sooner? Email <a href="mailto:support@campaignity.com">support@campaignity.com</a>.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-num">13</div>
+    <h2>Limitations of liability</h2>
+    <ul>
+      <li>Campaignity is provided as-is, without guarantees of uptime or accuracy.</li>
+      <li>Our total liability is capped at what you paid us in the past 12 months, or $100 — whichever is greater.</li>
+      <li>We're not responsible for indirect losses like lost revenue or data, even if we knew they were possible.</li>
+      <li>Events outside our reasonable control — natural disasters, cyberattacks, internet outages — are not our liability.</li>
+    </ul>
+    <div class="note">This doesn't mean we don't care. We'll always work to resolve issues quickly.</div>
+  </div>
+
+  <div class="section">
+    <div class="section-num">14</div>
+    <h2>Indemnification</h2>
+    <p>If Campaignity faces a legal dispute because of something you did on the platform — violating these Terms, an illegal campaign, infringing someone's rights — you agree to cover our legal costs and any resulting damages.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-num">15</div>
+    <h2>Ending your account</h2>
+    <p>Cancel your subscription in Settings and email <a href="mailto:support@campaignity.com">support@campaignity.com</a> to request deletion. We'll process it within 30 days.</p>
+    <p>We may suspend accounts for violations. Most issues get a 7-day warning first. Fraud or illegal activity may result in immediate action.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-num">16</div>
+    <h2>Governing law &amp; disputes</h2>
+    <p>These Terms are governed by the laws of Delaware, United States. Reach out to <a href="mailto:legal@campaignity.com">legal@campaignity.com</a> first — most things can be sorted with a conversation. Unresolved disputes after 30 days go to binding arbitration under AAA rules.</p>
+    <div class="note"><strong>Opt-out:</strong> You have 30 days from accepting these Terms to opt out of arbitration — just email <a href="mailto:legal@campaignity.com">legal@campaignity.com</a>. Disputes are always handled individually, never as class actions.</div>
+  </div>
+
+  <div class="section">
+    <div class="section-num">17</div>
+    <h2>Updates to these Terms</h2>
+    <p>For significant changes, we'll give you at least 14 days' notice by email or in-app. Continued use after that means you accept the update. You can always cancel before changes take effect.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-num">18</div>
+    <h2>Get in touch</h2>
+    <p>Questions? We're happy to help.</p>
+    <div class="contact-grid">
+      <div class="contact-item"><span>Support</span><a href="mailto:support@campaignity.ai">support@campaignity.ai</a></div>
+      <div class="contact-item"><span>Billing</span><a href="mailto:billing@campaignity.ai">billing@campaignity.ai</a></div>
+      <div class="contact-item"><span>Legal</span><a href="mailto:legal@campaignity.ai">legal@campaignity.ai</a></div>
+      <div class="contact-item"><span>Website</span><a href="https://www.campaignity.ai">www.campaignity.ai</a></div>
+    </div>
+  </div>
+
+</main>
+
+<footer>© 2026 Aval Inc. — Built for marketers, by people who care.</footer>
+
+<script>
+  const bar = document.getElementById('progress');
+  window.addEventListener('scroll', () => {
+    const pct = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100;
+    bar.style.width = pct + '%';
+  });
+</script>
+
+</body>
+</html>
