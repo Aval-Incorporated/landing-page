@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://avalws.com/sitemap.xml
