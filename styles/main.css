@@ -177,7 +177,7 @@ body::after {
 .content .main .headline {
     font-family: 'Syne', sans-serif;
     text-align: center;
-    font-size: clamp(36px, 6vw, 64px);
+    font-size: clamp(26px, 5vw, 64px);
     margin-bottom: 24px;
     color: var(--emphasis);
     font-weight: 800;
@@ -908,7 +908,19 @@ footer > p {
 
 @media (max-width: 480px) {
     footer .bottom .newsletter form { flex-direction: column; }
-    footer .bottom .newsletter form input { min-width: 100%; }
+    footer .bottom .newsletter form input { min-width: 100%; padding: 10px; }
     footer .bottom .newsletter form button { width: 100%; }
     .contactInfo { grid-template-columns: 1fr; }
+    .content .main .headline {
+        font-size: clamp(24px, 8vw, 36px);
+        letter-spacing: -0.02em;
+    }
+
+    .main .subheadline {
+        font-size: 14px;
+    }
+
+    .content {
+        margin-top: 120px;
+    }
 }
