@@ -36,14 +36,14 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     navArr.forEach(el => {
         el.addEventListener('click', async () => {
-            navArr.forEach(el => el.classList.remove('active'))
-            el.classList.add('active')
             console.log(el)
             let pageView = el.dataset.view
             pageSwitch(pageView, el)
             if(pageView == 'products'){
                 setTimeout(() => {waitlist()}, 200)
             }
+            navArr.forEach(el => el.classList.remove('active'))
+            el.classList.add('active')
         })
     })
 
