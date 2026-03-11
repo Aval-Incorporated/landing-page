@@ -1,9 +1,9 @@
 async function pageSwitch(page, el){
-    window.scroll(0, 0)
-    el.classList.add('active')
     const pageData = await fetch(`pages/${page}.html`)
     const textData = await pageData.text()
     document.querySelector('.content').innerHTML = textData
+    window.scroll(0, 0)
+    el.classList.add('active')
     if(page != 'home'){
         document.querySelector('.fot').classList.add('hide')
     }
