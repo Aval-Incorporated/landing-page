@@ -109,7 +109,7 @@ body::after {
     color: var(--greyed-out);
 }
 
-.header .navs ul li {
+.header .navs ul li, .header .navs ul a{
     font-size: 14px;
     font-weight: 500;
     cursor: pointer;
