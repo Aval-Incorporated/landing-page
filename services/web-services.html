@@ -5,452 +5,175 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Services — Aval Web Services</title>
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdn.hugeicons.com/font/hgi-stroke-rounded.css" />
+  <link rel="apple-touch-icon" sizes="180x180" href="../icons/aval/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../icons/aval/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../icons/aval/favicon-16x16.png">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
-      --blue-900: #020b18;
-      --blue-800: #041628;
-      --blue-700: #072040;
-      --blue-600: #0c3060;
-      --blue-400: #1d6fa4;
-      --blue-300: #0EA5E9;
-      --blue-200: #38bdf8;
-      --blue-100: #bae6fd;
-      --white: #f0f8ff;
-      --dim: #7bafc8;
-      --border: rgba(14,165,233,0.15);
-      --card-bg: rgba(4,22,40,0.8);
+      --blue-900: #020b18; --blue-800: #041628; --blue-700: #072040;
+      --blue-600: #0c3060; --blue-400: #1d6fa4; --blue-300: #0EA5E9;
+      --blue-200: #38bdf8; --blue-100: #bae6fd; --white: #f0f8ff;
+      --dim: #7bafc8; --border: rgba(14,165,233,0.15); --card-bg: rgba(4,22,40,0.8);
     }
-
     html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--blue-900); color: var(--white); overflow-x: hidden; }
 
-    body {
-      font-family: 'DM Sans', sans-serif;
-      background: var(--blue-900);
-      color: var(--white);
-      overflow-x: hidden;
-    }
+    .bg-glow { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+    .bg-glow::before { content: ''; position: absolute; width: 900px; height: 900px; background: radial-gradient(circle, rgba(14,165,233,0.12) 0%, transparent 60%); top: -200px; right: -200px; }
+    .bg-glow::after { content: ''; position: absolute; width: 700px; height: 700px; background: radial-gradient(circle, rgba(7,32,64,0.9) 0%, transparent 70%); bottom: 0; left: -150px; }
 
-    .bg-glow {
-      position: fixed;
-      inset: 0;
-      z-index: 0;
-      pointer-events: none;
-    }
-    .bg-glow::before {
-      content: '';
-      position: absolute;
-      width: 900px; height: 900px;
-      background: radial-gradient(circle, rgba(14,165,233,0.12) 0%, transparent 60%);
-      top: -200px; right: -200px;
-    }
-    .bg-glow::after {
-      content: '';
-      position: absolute;
-      width: 700px; height: 700px;
-      background: radial-gradient(circle, rgba(7,32,64,0.9) 0%, transparent 70%);
-      bottom: 0; left: -150px;
-    }
-
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1.3rem 4rem;
-      background: rgba(2,11,24,0.8);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--border);
-    }
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      text-decoration: none;
-    }
-    .nav-logo img {
-      width: 26px; height: 26px;
-      object-fit: contain;
-      filter: brightness(0) invert(1);
-    }
-    .nav-logo span {
-      font-family: 'Syne', sans-serif;
-      font-weight: 700;
-      font-size: 1rem;
-      color: var(--white);
-    }
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 2.5rem;
-      list-style: none;
-    }
-    .nav-links a {
-      font-size: 0.82rem;
-      color: var(--dim);
-      text-decoration: none;
-      letter-spacing: 0.03em;
-      transition: color 0.2s;
-    }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.3rem 4rem; background: rgba(2,11,24,0.8); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); }
+    .nav-logo { display: flex; align-items: center; gap: 0.6rem; text-decoration: none; }
+    .nav-logo img { width: 26px; height: 26px; object-fit: contain; }
+    .nav-logo span { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1rem; color: var(--white); }
+    .nav-links { display: flex; align-items: center; gap: 2.5rem; list-style: none; }
+    .nav-links a { font-size: 0.82rem; color: var(--dim); text-decoration: none; letter-spacing: 0.03em; transition: color 0.2s; }
     .nav-links a:hover, .nav-links a.active { color: var(--white); }
-    .nav-cta {
-      background: var(--blue-300);
-      color: var(--blue-900) !important;
-      font-weight: 600;
-      padding: 0.45rem 1.1rem;
-      border-radius: 4px;
-    }
+    .nav-cta { background: var(--blue-300); color: var(--blue-900) !important; font-weight: 600; padding: 0.45rem 1.1rem; border-radius: 4px; }
 
-    /* HERO */
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 8rem 4rem 6rem;
-      position: relative;
-      z-index: 1;
-      border-bottom: 1px solid var(--border);
-    }
-    .hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image: radial-gradient(circle, rgba(14,165,233,0.18) 1px, transparent 1px);
-      background-size: 36px 36px;
-      mask-image: radial-gradient(ellipse 70% 80% at 60% 40%, black 0%, transparent 100%);
-      pointer-events: none;
-    }
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: rgba(14,165,233,0.1);
-      border: 1px solid rgba(14,165,233,0.25);
-      color: var(--blue-200);
-      font-size: 0.72rem;
-      font-weight: 500;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      padding: 0.35rem 0.9rem;
-      border-radius: 999px;
-      margin-bottom: 2rem;
-      width: fit-content;
-      animation: fadeUp 0.5s ease both;
-    }
-    .hero-badge span {
-      width: 6px; height: 6px;
-      border-radius: 50%;
-      background: var(--blue-300);
-      box-shadow: 0 0 8px var(--blue-300);
-      animation: pulse 2s infinite;
-    }
+    .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 8rem 4rem 6rem; position: relative; z-index: 1; border-bottom: 1px solid var(--border); }
+    .hero::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(circle, rgba(14,165,233,0.18) 1px, transparent 1px); background-size: 36px 36px; mask-image: radial-gradient(ellipse 70% 80% at 60% 40%, black 0%, transparent 100%); pointer-events: none; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(14,165,233,0.1); border: 1px solid rgba(14,165,233,0.25); color: var(--blue-200); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; padding: 0.35rem 0.9rem; border-radius: 999px; margin-bottom: 2rem; width: fit-content; animation: fadeUp 0.5s ease both; }
+    .hero-badge span { width: 6px; height: 6px; border-radius: 50%; background: var(--blue-300); box-shadow: 0 0 8px var(--blue-300); animation: pulse 2s infinite; }
     @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
-
-    .hero h1 {
-      font-family: 'Syne', sans-serif;
-      font-size: clamp(3rem, 6vw, 6.5rem);
-      font-weight: 800;
-      line-height: 1.0;
-      letter-spacing: -0.025em;
-      max-width: 850px;
-      animation: fadeUp 0.5s 0.1s ease both;
-    }
+    .hero h1 { font-family: 'Syne', sans-serif; font-size: clamp(3rem, 6vw, 6.5rem); font-weight: 800; line-height: 1.0; letter-spacing: -0.025em; max-width: 850px; animation: fadeUp 0.5s 0.1s ease both; }
     .hero h1 .blue { color: var(--blue-300); }
+    .hero-desc { font-size: 1rem; color: var(--dim); font-weight: 300; line-height: 1.8; max-width: 500px; margin-top: 1.8rem; animation: fadeUp 0.5s 0.2s ease both; }
+    .hero-actions { display: flex; align-items: center; gap: 1.5rem; margin-top: 2.5rem; animation: fadeUp 0.5s 0.3s ease both; }
 
-    .hero-desc {
-      font-size: 1rem;
-      color: var(--dim);
-      font-weight: 300;
-      line-height: 1.8;
-      max-width: 500px;
-      margin-top: 1.8rem;
-      animation: fadeUp 0.5s 0.2s ease both;
-    }
-    .hero-actions {
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
-      margin-top: 2.5rem;
-      animation: fadeUp 0.5s 0.3s ease both;
-    }
-    .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.8rem 1.8rem;
-      background: var(--blue-300);
-      color: var(--blue-900);
-      font-family: 'Syne', sans-serif;
-      font-size: 0.85rem;
-      font-weight: 700;
-      border-radius: 5px;
-      text-decoration: none;
-      transition: background 0.2s, transform 0.15s;
-      box-shadow: 0 0 24px rgba(14,165,233,0.3);
-    }
+    .btn-primary { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.8rem 1.8rem; background: var(--blue-300); color: var(--blue-900); font-family: 'Syne', sans-serif; font-size: 0.85rem; font-weight: 700; border-radius: 5px; text-decoration: none; cursor: pointer; border: none; transition: background 0.2s, transform 0.15s; box-shadow: 0 0 24px rgba(14,165,233,0.3); }
     .btn-primary:hover { background: var(--blue-200); transform: translateY(-1px); }
-    .btn-ghost {
-      font-size: 0.85rem;
-      color: var(--dim);
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-      transition: color 0.2s;
-    }
+    .btn-ghost { font-size: 0.85rem; color: var(--dim); text-decoration: none; display: flex; align-items: center; gap: 0.4rem; transition: color 0.2s; cursor: pointer; background: none; border: none; font-family: 'DM Sans', sans-serif; }
     .btn-ghost:hover { color: var(--white); }
 
-    /* SERVICES */
-    section.services {
-      padding: 8rem 4rem;
-      position: relative;
-      z-index: 1;
+    section.services { padding: 8rem 4rem; position: relative; z-index: 1; }
+    .section-eyebrow { font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--blue-300); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.7rem; }
+    .section-eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--blue-300); }
+    .section-header h2 { font-family: 'Syne', sans-serif; font-size: clamp(1.8rem, 3vw, 2.8rem); font-weight: 700; letter-spacing: -0.02em; max-width: 500px; line-height: 1.15; margin-bottom: 4rem; }
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5px; background: var(--border); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+    .service-card { background: var(--card-bg); padding: 2.5rem; position: relative; overflow: hidden; opacity: 0; transform: translateY(24px); transition: opacity 0.5s ease, transform 0.5s ease, background 0.3s; }
+    .service-card.visible { opacity: 1; transform: translateY(0); }
+    .service-card:hover { background: rgba(7,32,64,0.95); }
+    .service-card::after { content: ''; position: absolute; width: 200px; height: 200px; background: radial-gradient(circle, rgba(14,165,233,0.1) 0%, transparent 70%); top: -60px; right: -60px; opacity: 0; transition: opacity 0.4s; pointer-events: none; }
+    .service-card:hover::after { opacity: 1; }
+    .service-icon { width: 44px; height: 44px; border-radius: 10px; background: rgba(14,165,233,0.1); border: 1px solid rgba(14,165,233,0.2); display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; }
+    .service-icon svg { width: 20px; height: 20px; stroke: var(--blue-300); fill: none; stroke-width: 1.8; }
+    .service-card h3 { font-family: 'Syne', sans-serif; font-size: 1.25rem; font-weight: 700; margin-bottom: 0.8rem; letter-spacing: -0.01em; }
+    .service-card > p { font-size: 0.85rem; color: var(--dim); line-height: 1.75; font-weight: 300; margin-bottom: 2rem; }
+    .service-features { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; border-top: 1px solid var(--border); padding-top: 1.5rem; }
+    .service-features li { font-size: 0.78rem; color: rgba(240,248,255,0.55); display: flex; align-items: center; gap: 0.6rem; }
+    .service-features li::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--blue-400); flex-shrink: 0; }
+
+    section.process { padding: 6rem 4rem; border-top: 1px solid var(--border); position: relative; z-index: 1; }
+    .process-inner { display: grid; grid-template-columns: 320px 1fr; gap: 6rem; align-items: start; }
+    .process-inner h2 { font-family: 'Syne', sans-serif; font-size: 2.2rem; font-weight: 700; line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 1rem; }
+    .process-inner > div > p { font-size: 0.88rem; color: var(--dim); line-height: 1.75; font-weight: 300; }
+    .process-steps { display: flex; flex-direction: column; }
+    .step { display: grid; grid-template-columns: 48px 1fr; gap: 1.5rem; padding: 2rem 0; border-bottom: 1px solid var(--border); opacity: 0; transform: translateX(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
+    .step:first-child { padding-top: 0; }
+    .step.visible { opacity: 1; transform: translateX(0); }
+    .step-circle { width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(14,165,233,0.3); background: rgba(14,165,233,0.08); display: flex; align-items: center; justify-content: center; font-family: 'Syne', sans-serif; font-size: 0.7rem; font-weight: 700; color: var(--blue-300); flex-shrink: 0; }
+    .step-content h4 { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 600; margin-bottom: 0.4rem; }
+    .step-content p { font-size: 0.82rem; color: var(--dim); line-height: 1.7; font-weight: 300; }
+
+    section.cta { margin: 0 4rem 6rem; border-radius: 16px; background: linear-gradient(135deg, var(--blue-700) 0%, var(--blue-800) 50%, rgba(14,165,233,0.08) 100%); border: 1px solid rgba(14,165,233,0.2); padding: 5rem 4rem; position: relative; z-index: 1; overflow: hidden; text-align: center; }
+    section.cta::before { content: ''; position: absolute; width: 500px; height: 500px; background: radial-gradient(circle, rgba(14,165,233,0.12) 0%, transparent 65%); top: 50%; left: 50%; transform: translate(-50%,-50%); pointer-events: none; }
+    .cta-label { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--blue-300); margin-bottom: 1.2rem; }
+    section.cta h2 { font-family: 'Syne', sans-serif; font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 800; letter-spacing: -0.02em; line-height: 1.1; max-width: 600px; margin: 0 auto 1.2rem; }
+    section.cta p { font-size: 0.9rem; color: var(--dim); max-width: 380px; margin: 0 auto 2.5rem; line-height: 1.7; font-weight: 300; }
+
+    footer { padding: 2rem 4rem; border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; position: relative; z-index: 1; }
+    .footer-logo { font-family: 'Syne', sans-serif; font-weight: 700; color: var(--white); }
+    footer p { font-size: 0.75rem; color: var(--dim); }
+
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* ── MODAL ── */
+    .modal-backdrop {
+      position: fixed; inset: 0; z-index: 200;
+      background: rgba(2,11,24,0.8);
+      backdrop-filter: blur(8px);
+      display: flex; align-items: center; justify-content: center;
+      padding: 1.5rem;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.25s ease;
     }
-    .section-eyebrow {
-      font-size: 0.7rem;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--blue-300);
-      margin-bottom: 1rem;
-      display: flex;
-      align-items: center;
-      gap: 0.7rem;
-    }
-    .section-eyebrow::before {
-      content: '';
-      width: 28px; height: 1px;
-      background: var(--blue-300);
-    }
-    .section-header h2 {
-      font-family: 'Syne', sans-serif;
-      font-size: clamp(1.8rem, 3vw, 2.8rem);
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      max-width: 500px;
-      line-height: 1.15;
-      margin-bottom: 4rem;
-    }
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5px;
-      background: var(--border);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      overflow: hidden;
-    }
-    .service-card {
-      background: var(--card-bg);
+    .modal-backdrop.open { opacity: 1; pointer-events: all; }
+
+    .modal {
+      background: var(--blue-800);
+      border: 1px solid rgba(14,165,233,0.2);
+      border-radius: 18px;
+      width: 100%; max-width: 460px;
       padding: 2.5rem;
       position: relative;
       overflow: hidden;
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.5s ease, transform 0.5s ease, background 0.3s;
+      transform: translateY(24px) scale(0.97);
+      transition: transform 0.3s cubic-bezier(0.22,1,0.36,1);
     }
-    .service-card.visible { opacity: 1; transform: translateY(0); }
-    .service-card:hover { background: rgba(7,32,64,0.95); }
-    .service-card::after {
-      content: '';
-      position: absolute;
-      width: 200px; height: 200px;
-      background: radial-gradient(circle, rgba(14,165,233,0.1) 0%, transparent 70%);
-      top: -60px; right: -60px;
-      opacity: 0;
-      transition: opacity 0.4s;
+    .modal-backdrop.open .modal { transform: translateY(0) scale(1); }
+
+    .modal::before {
+      content: ''; position: absolute;
+      width: 350px; height: 350px;
+      background: radial-gradient(circle, rgba(14,165,233,0.07) 0%, transparent 70%);
+      top: -100px; right: -100px;
       pointer-events: none;
     }
-    .service-card:hover::after { opacity: 1; }
-    .service-icon {
-      width: 44px; height: 44px;
+
+    .modal-close {
+      position: absolute; top: 1.1rem; right: 1.1rem;
+      width: 32px; height: 32px; border-radius: 8px;
+      background: rgba(14,165,233,0.07);
+      border: 1px solid rgba(14,165,233,0.15);
+      color: var(--dim); cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s, color 0.2s;
+      z-index: 1;
+    }
+    .modal-close:hover { background: rgba(14,165,233,0.15); color: var(--white); }
+    .modal-close svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2.2; }
+
+    .modal-eyebrow { font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--blue-300); margin-bottom: 0.5rem; position: relative; }
+    .modal h2 { font-family: 'Syne', sans-serif; font-size: 1.65rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 0.5rem; position: relative; }
+    .modal > p { font-size: 0.85rem; color: var(--dim); line-height: 1.7; font-weight: 300; margin-bottom: 1.8rem; position: relative; }
+
+    .contact-row {
+      display: flex; align-items: center; gap: 1rem;
+      background: rgba(14,165,233,0.05);
+      border: 1px solid rgba(14,165,233,0.12);
       border-radius: 10px;
-      background: rgba(14,165,233,0.1);
-      border: 1px solid rgba(14,165,233,0.2);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 1.5rem;
+      padding: 1rem 1.1rem;
+      margin-bottom: 0.75rem;
+      text-decoration: none;
+      cursor: pointer;
+      position: relative;
+      transition: background 0.2s, border-color 0.2s;
     }
-    .service-icon svg {
-      width: 20px; height: 20px;
-      stroke: var(--blue-300);
-      fill: none;
-      stroke-width: 1.8;
-    }
-    .service-card h3 {
-      font-family: 'Syne', sans-serif;
-      font-size: 1.25rem;
-      font-weight: 700;
-      margin-bottom: 0.8rem;
-      letter-spacing: -0.01em;
-    }
-    .service-card > p {
-      font-size: 0.85rem;
-      color: var(--dim);
-      line-height: 1.75;
-      font-weight: 300;
-      margin-bottom: 2rem;
-    }
-    .service-features {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-      border-top: 1px solid var(--border);
-      padding-top: 1.5rem;
-    }
-    .service-features li {
-      font-size: 0.78rem;
-      color: rgba(240,248,255,0.55);
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-    }
-    .service-features li::before {
-      content: '';
-      width: 5px; height: 5px;
-      border-radius: 50%;
-      background: var(--blue-400);
+    .contact-row:hover { background: rgba(14,165,233,0.1); border-color: rgba(14,165,233,0.28); }
+
+    .contact-icon { width: 38px; height: 38px; border-radius: 9px; background: rgba(14,165,233,0.12); border: 1px solid rgba(14,165,233,0.2); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .contact-icon svg { width: 17px; height: 17px; stroke: var(--blue-300); fill: none; stroke-width: 1.8; }
+
+    .contact-info { flex: 1; }
+    .contact-label { font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--dim); margin-bottom: 0.15rem; }
+    .contact-value { font-family: 'Syne', sans-serif; font-size: 0.88rem; font-weight: 600; color: var(--white); }
+
+    .copy-btn {
+      width: 30px; height: 30px; border-radius: 6px;
+      background: none; border: 1px solid var(--border);
+      color: var(--dim); cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
       flex-shrink: 0;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
     }
+    .copy-btn:hover { background: rgba(14,165,233,0.12); color: var(--white); border-color: rgba(14,165,233,0.3); }
+    .copy-btn.copied { border-color: #22c55e; color: #22c55e; }
+    .copy-btn svg { width: 13px; height: 13px; stroke: currentColor; fill: none; stroke-width: 2; pointer-events: none; }
 
-    /* PROCESS */
-    section.process {
-      padding: 6rem 4rem;
-      border-top: 1px solid var(--border);
-      position: relative;
-      z-index: 1;
-    }
-    .process-inner {
-      display: grid;
-      grid-template-columns: 320px 1fr;
-      gap: 6rem;
-      align-items: start;
-    }
-    .process-inner h2 {
-      font-family: 'Syne', sans-serif;
-      font-size: 2.2rem;
-      font-weight: 700;
-      line-height: 1.15;
-      letter-spacing: -0.02em;
-      margin-bottom: 1rem;
-    }
-    .process-inner > div > p {
-      font-size: 0.88rem;
-      color: var(--dim);
-      line-height: 1.75;
-      font-weight: 300;
-    }
-    .process-steps { display: flex; flex-direction: column; }
-    .step {
-      display: grid;
-      grid-template-columns: 48px 1fr;
-      gap: 1.5rem;
-      padding: 2rem 0;
-      border-bottom: 1px solid var(--border);
-      opacity: 0;
-      transform: translateX(20px);
-      transition: opacity 0.5s ease, transform 0.5s ease;
-    }
-    .step:first-child { padding-top: 0; }
-    .step.visible { opacity: 1; transform: translateX(0); }
-    .step-circle {
-      width: 36px; height: 36px;
-      border-radius: 50%;
-      border: 1px solid rgba(14,165,233,0.3);
-      background: rgba(14,165,233,0.08);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Syne', sans-serif;
-      font-size: 0.7rem;
-      font-weight: 700;
-      color: var(--blue-300);
-      flex-shrink: 0;
-    }
-    .step-content h4 {
-      font-family: 'Syne', sans-serif;
-      font-size: 1rem;
-      font-weight: 600;
-      margin-bottom: 0.4rem;
-    }
-    .step-content p {
-      font-size: 0.82rem;
-      color: var(--dim);
-      line-height: 1.7;
-      font-weight: 300;
-    }
-
-    /* CTA */
-    section.cta {
-      margin: 0 4rem 6rem;
-      border-radius: 16px;
-      background: linear-gradient(135deg, var(--blue-700) 0%, var(--blue-800) 50%, rgba(14,165,233,0.08) 100%);
-      border: 1px solid rgba(14,165,233,0.2);
-      padding: 5rem 4rem;
-      position: relative;
-      z-index: 1;
-      overflow: hidden;
-      text-align: center;
-    }
-    section.cta::before {
-      content: '';
-      position: absolute;
-      width: 500px; height: 500px;
-      background: radial-gradient(circle, rgba(14,165,233,0.12) 0%, transparent 65%);
-      top: 50%; left: 50%;
-      transform: translate(-50%,-50%);
-      pointer-events: none;
-    }
-    .cta-label {
-      font-size: 0.7rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--blue-300);
-      margin-bottom: 1.2rem;
-    }
-    section.cta h2 {
-      font-family: 'Syne', sans-serif;
-      font-size: clamp(2rem, 4vw, 3.5rem);
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      line-height: 1.1;
-      max-width: 600px;
-      margin: 0 auto 1.2rem;
-    }
-    section.cta p {
-      font-size: 0.9rem;
-      color: var(--dim);
-      max-width: 380px;
-      margin: 0 auto 2.5rem;
-      line-height: 1.7;
-      font-weight: 300;
-    }
-
-    footer {
-      padding: 2rem 4rem;
-      border-top: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      position: relative;
-      z-index: 1;
-    }
-    .footer-logo {
-      font-family: 'Syne', sans-serif;
-      font-weight: 700;
-      color: var(--white);
-    }
-    footer p { font-size: 0.75rem; color: var(--dim); }
-
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
+    .modal-note { font-size: 0.74rem; color: rgba(123,175,200,0.55); text-align: center; margin-top: 1.4rem; line-height: 1.65; position: relative; }
 
     @media (max-width: 900px) {
       nav { padding: 1.2rem 1.5rem; }
@@ -490,10 +213,10 @@
       Our Services
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
     </a>
-    <a href="https://avalws.com/#contact" class="btn-ghost">
+    <button class="btn-ghost open-contact">
       Start a project
       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-    </a>
+    </button>
   </div>
 </section>
 
@@ -601,10 +324,10 @@
   <div class="cta-label">Ready to start?</div>
   <h2>Let's build something that performs.</h2>
   <p>Tell us what you need. We'll tell you how we'd approach it — no fluff, no overselling.</p>
-  <a href="https://avalws.com/#contact" class="btn-primary">
+  <button class="btn-primary open-contact">
     Start a Project
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-  </a>
+  </button>
 </section>
 
 <footer>
@@ -613,7 +336,59 @@
   <p>avalws.com</p>
 </footer>
 
+<!-- CONTACT MODAL -->
+<div class="modal-backdrop" id="contactModal" role="dialog" aria-modal="true">
+  <div class="modal">
+    <button class="modal-close" id="modalClose" aria-label="Close modal">
+      <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+
+    <div class="modal-eyebrow">Get in touch</div>
+    <h2>Start a project</h2>
+    <p>Reach out and tell us what you're working on. We typically get back within 24 hours.</p>
+
+    <a class="contact-row" href="mailto:admin@avalws.com">
+      <div class="contact-icon">
+        <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+      </div>
+      <div class="contact-info">
+        <div class="contact-label">Email us</div>
+        <div class="contact-value">admin@avalws.com</div>
+      </div>
+      <button class="copy-btn" id="copyEmailBtn" aria-label="Copy email address">
+        <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+      </button>
+    </a>
+
+    <a class="contact-row" href="https://avalws.com" target="_blank" rel="noopener">
+      <div class="contact-icon">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+      </div>
+      <div class="contact-info">
+        <div class="contact-label">Website</div>
+        <div class="contact-value">avalws.com</div>
+      </div>
+    </a>
+    <a class="contact-row" href="https://wa.me/2347084436668" target="_blank" rel="noopener">
+      <div class="contact-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21"/>
+        <path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1Zm0 0a5 5 0 0 0 5 5m0 0h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1Z"/>
+        </svg>
+      </div>
+      <div class="contact-info">
+      <div class="contact-label">WhatsApp</div>
+      <div class="contact-value">Aval Inc</div>
+    </div>
+    </a>
+    
+
+    <p class="modal-note">No commitment required — just tell us what you need<br/>and we'll take it from there.</p>
+  </div>
+</div>
+
 <script>
+  // Scroll reveal
   const obs = new IntersectionObserver((entries) => {
     entries.forEach((entry, i) => {
       if (entry.isIntersecting) {
@@ -622,8 +397,42 @@
       }
     })
   }, { threshold: 0.1 })
-
   document.querySelectorAll('.service-card, .step').forEach(el => obs.observe(el))
+
+  // Modal open/close
+  const modal = document.getElementById('contactModal')
+
+  document.querySelectorAll('.open-contact').forEach(btn => {
+    btn.addEventListener('click', () => {
+      modal.classList.add('open')
+      document.body.style.overflow = 'hidden'
+    })
+  })
+
+  function closeModal() {
+    modal.classList.remove('open')
+    document.body.style.overflow = ''
+  }
+
+  document.getElementById('modalClose').addEventListener('click', closeModal)
+  modal.addEventListener('click', e => { if (e.target === modal) closeModal() })
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal() })
+
+  // Copy email
+  document.getElementById('copyEmailBtn').addEventListener('click', function(e) {
+    e.preventDefault()
+    e.stopPropagation()
+    navigator.clipboard.writeText('admin@avalws.com').then(() => {
+      const btn = this
+      const orig = btn.innerHTML
+      btn.innerHTML = `<svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>`
+      btn.classList.add('copied')
+      setTimeout(() => {
+        btn.innerHTML = orig
+        btn.classList.remove('copied')
+      }, 2000)
+    })
+  })
 </script>
 </body>
 </html>
