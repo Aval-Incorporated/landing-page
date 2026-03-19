@@ -108,7 +108,10 @@ body::after {
     gap: 28px;
     color: var(--greyed-out);
 }
-
+.header .navs ul a{
+    color: var(--greyed-out);
+    text-decoration: none;
+}
 .header .navs ul li, .header .navs ul a{
     font-size: 14px;
     font-weight: 500;
