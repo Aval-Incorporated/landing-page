@@ -24,7 +24,36 @@
     .bg-glow::before { content: ''; position: absolute; width: 900px; height: 900px; background: radial-gradient(circle, rgba(14,165,233,0.12) 0%, transparent 60%); top: -200px; right: -200px; }
     .bg-glow::after { content: ''; position: absolute; width: 700px; height: 700px; background: radial-gradient(circle, rgba(7,32,64,0.9) 0%, transparent 70%); bottom: 0; left: -150px; }
 
-    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.3rem 4rem; background: rgba(2,11,24,0.8); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); }
+    nav {
+        position: fixed;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 90%;
+        z-index: 100;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 15px;
+        background: rgba(2, 11, 24, 0.75);
+        backdrop-filter: blur(16px);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        transition: border-color 0.3s;
+        }
+        nav:hover {
+        border-color: rgba(14, 165, 233, 0.3);
+        }
+    nav button a{
+        text-decoration: none;
+        color: #fff;
+        font-weight: 500;
+        font-family: 'DM Sans'
+    }
+    nav button{
+        border: none;
+        
+    }
     .nav-logo { display: flex; align-items: center; gap: 0.6rem; text-decoration: none; }
     .nav-logo img { width: 26px; height: 26px; object-fit: contain; }
     .nav-logo span { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1rem; color: var(--white); }
@@ -32,7 +61,7 @@
     .nav-links a { font-size: 0.82rem; color: var(--dim); text-decoration: none; letter-spacing: 0.03em; transition: color 0.2s; }
     .nav-links a:hover, .nav-links a.active { color: var(--white); }
     .nav-cta { background: var(--blue-300); color: var(--blue-900) !important; font-weight: 600; padding: 0.45rem 1.1rem; border-radius: 4px; }
-
+    
     .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 8rem 4rem 6rem; position: relative; z-index: 1; border-bottom: 1px solid var(--border); }
     .hero::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(circle, rgba(14,165,233,0.18) 1px, transparent 1px); background-size: 36px 36px; mask-image: radial-gradient(ellipse 70% 80% at 60% 40%, black 0%, transparent 100%); pointer-events: none; }
     .hero-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(14,165,233,0.1); border: 1px solid rgba(14,165,233,0.25); color: var(--blue-200); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; padding: 0.35rem 0.9rem; border-radius: 999px; margin-bottom: 2rem; width: fit-content; animation: fadeUp 0.5s ease both; }
@@ -195,13 +224,7 @@
     <img src="https://avalws.com/logos/BGless-logo.png" alt="Aval"/>
     <span>Aval</span>
   </a>
-  <ul class="nav-links">
-    <li><a href="https://avalws.com">Home</a></li>
-    <li><a href="#" class="active">Services</a></li>
-    <li><a href="https://avalws.com/#about">About</a></li>
-    <li><a href="https://avalws.com/#contact">Contact</a></li>
-    <li><a href="https://campaignity.com" class="nav-cta">View Campaignity</a></li>
-  </ul>
+    <button class="nav-cta"><a href="https://avalws.com">Home</a></button>
 </nav>
 
 <section class="hero">
