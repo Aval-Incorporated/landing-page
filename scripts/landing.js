@@ -10,7 +10,7 @@ async function pageSwitch(page, el){
     else{
         document.querySelector('.fot').classList.remove('hide')                
     }
-}
+} 
 function waitlist(){
     const jw = document.getElementById('JWaitlist')
 
