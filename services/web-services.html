@@ -95,6 +95,261 @@
     .service-features li { font-size: 0.78rem; color: rgba(240,248,255,0.55); display: flex; align-items: center; gap: 0.6rem; }
     .service-features li::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--blue-400); flex-shrink: 0; }
 
+    /* ── PRICING ── */
+    section.pricing {
+      padding: 8rem 4rem;
+      border-top: 1px solid var(--border);
+      position: relative;
+      z-index: 1;
+    }
+    section.pricing::before {
+      content: '';
+      position: absolute;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(14,165,233,0.06) 0%, transparent 65%);
+      bottom: -100px; left: 50%;
+      transform: translateX(-50%);
+      pointer-events: none;
+    }
+
+    .pricing-header { margin-bottom: 1.5rem; }
+    .pricing-subtext {
+      font-size: 0.88rem;
+      color: var(--dim);
+      font-weight: 300;
+      line-height: 1.75;
+      max-width: 480px;
+      margin-bottom: 3.5rem;
+    }
+
+    /* Toggle */
+    .billing-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 3.5rem;
+      background: rgba(14,165,233,0.05);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 0.35rem 0.35rem 0.35rem 1rem;
+    }
+    .billing-toggle span {
+      font-size: 0.78rem;
+      color: var(--dim);
+      font-weight: 400;
+      white-space: nowrap;
+    }
+    .billing-toggle span.active { color: var(--white); font-weight: 500; }
+    .toggle-switch {
+      width: 44px; height: 24px;
+      background: rgba(14,165,233,0.15);
+      border: 1px solid rgba(14,165,233,0.25);
+      border-radius: 999px;
+      cursor: pointer;
+      position: relative;
+      transition: background 0.25s;
+      flex-shrink: 0;
+    }
+    .toggle-switch.on { background: var(--blue-300); border-color: var(--blue-300); }
+    .toggle-knob {
+      position: absolute;
+      top: 3px; left: 3px;
+      width: 16px; height: 16px;
+      border-radius: 50%;
+      background: var(--white);
+      transition: transform 0.25s cubic-bezier(0.22,1,0.36,1);
+    }
+    .toggle-switch.on .toggle-knob { transform: translateX(20px); }
+    .save-badge {
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: rgba(34,197,94,0.15);
+      color: #4ade80;
+      border: 1px solid rgba(34,197,94,0.25);
+      border-radius: 999px;
+      padding: 0.2rem 0.55rem;
+    }
+
+    /* Cards */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+    }
+
+    .plan-card {
+      background: var(--card-bg);
+      padding: 2.5rem;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease, transform 0.5s ease, background 0.3s;
+    }
+    .plan-card.visible { opacity: 1; transform: translateY(0); }
+    .plan-card:hover { background: rgba(7,32,64,0.95); }
+
+    /* Featured middle card */
+    .plan-card.featured {
+      background: linear-gradient(160deg, rgba(14,165,233,0.12) 0%, rgba(4,22,40,0.95) 60%);
+      border-left: 1px solid rgba(14,165,233,0.25);
+      border-right: 1px solid rgba(14,165,233,0.25);
+    }
+    .plan-card.featured::before {
+      content: '';
+      position: absolute;
+      width: 280px; height: 280px;
+      background: radial-gradient(circle, rgba(14,165,233,0.14) 0%, transparent 70%);
+      top: -80px; right: -60px;
+      pointer-events: none;
+    }
+
+    .plan-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--blue-900);
+      background: var(--blue-300);
+      border-radius: 999px;
+      padding: 0.25rem 0.7rem;
+      margin-bottom: 1.8rem;
+      width: fit-content;
+    }
+    .plan-badge-spacer { height: 1.9rem; margin-bottom: 1.8rem; } /* keeps alignment on non-featured cards */
+
+    .plan-name {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--dim);
+      margin-bottom: 0.5rem;
+    }
+
+    .plan-price {
+      display: flex;
+      align-items: baseline;
+      gap: 0.3rem;
+      margin-bottom: 0.4rem;
+    }
+    .plan-currency {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--blue-200);
+      line-height: 1;
+      margin-top: 0.3rem;
+    }
+    .plan-amount {
+      font-family: 'Syne', sans-serif;
+      font-size: 3.2rem;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      color: var(--white);
+    }
+    .plan-period {
+      font-size: 0.8rem;
+      color: var(--dim);
+      font-weight: 300;
+    }
+
+    .plan-desc {
+      font-size: 0.82rem;
+      color: var(--dim);
+      font-weight: 300;
+      line-height: 1.7;
+      margin-bottom: 2rem;
+      padding-bottom: 1.8rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .plan-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      flex: 1;
+      margin-bottom: 2rem;
+    }
+    .plan-features li {
+      font-size: 0.81rem;
+      color: rgba(240,248,255,0.7);
+      display: flex;
+      align-items: flex-start;
+      gap: 0.65rem;
+      line-height: 1.4;
+    }
+    .plan-features li .check {
+      width: 16px; height: 16px;
+      border-radius: 50%;
+      background: rgba(14,165,233,0.12);
+      border: 1px solid rgba(14,165,233,0.25);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .plan-features li .check svg {
+      width: 8px; height: 8px;
+      stroke: var(--blue-300);
+      fill: none;
+      stroke-width: 2.5;
+    }
+    .plan-features li.dim-feature { color: rgba(240,248,255,0.3); }
+    .plan-features li.dim-feature .check { background: rgba(255,255,255,0.03); border-color: rgba(255,255,255,0.08); }
+    .plan-features li.dim-feature .check svg { stroke: rgba(255,255,255,0.2); }
+
+    .plan-cta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.85rem 1.5rem;
+      border-radius: 6px;
+      font-family: 'Syne', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      border: none;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s, border-color 0.2s;
+    }
+    .plan-cta.primary {
+      background: var(--blue-300);
+      color: var(--blue-900);
+      box-shadow: 0 0 20px rgba(14,165,233,0.25);
+    }
+    .plan-cta.primary:hover { background: var(--blue-200); transform: translateY(-1px); }
+    .plan-cta.outline {
+      background: transparent;
+      color: var(--white);
+      border: 1px solid rgba(14,165,233,0.25);
+    }
+    .plan-cta.outline:hover { background: rgba(14,165,233,0.08); border-color: rgba(14,165,233,0.4); transform: translateY(-1px); }
+
+    .pricing-note {
+      text-align: center;
+      margin-top: 2rem;
+      font-size: 0.78rem;
+      color: rgba(123,175,200,0.5);
+      line-height: 1.65;
+    }
+    .pricing-note a { color: var(--blue-300); text-decoration: none; }
+    .pricing-note a:hover { text-decoration: underline; }
+
     section.process { padding: 6rem 4rem; border-top: 1px solid var(--border); position: relative; z-index: 1; }
     .process-inner { display: grid; grid-template-columns: 320px 1fr; gap: 6rem; align-items: start; }
     .process-inner h2 { font-family: 'Syne', sans-serif; font-size: 2.2rem; font-weight: 700; line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 1rem; }
@@ -207,8 +462,11 @@
     @media (max-width: 900px) {
       nav { padding: 1.2rem 1.5rem; }
       .nav-links { display: none; }
-      .hero, section.services, section.process { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .hero, section.services, section.process, section.pricing { padding-left: 1.5rem; padding-right: 1.5rem; }
       .services-grid { grid-template-columns: 1fr; }
+      .pricing-grid { grid-template-columns: 1fr; }
+      .plan-card.featured { border: none; border-top: 1px solid rgba(14,165,233,0.25); border-bottom: 1px solid rgba(14,165,233,0.25); }
+      .plan-badge-spacer { display: none; }
       .process-inner { grid-template-columns: 1fr; gap: 2.5rem; }
       section.cta { margin: 0 1.5rem 4rem; padding: 3rem 1.5rem; }
       footer { flex-direction: column; gap: 0.6rem; padding: 1.5rem; text-align: center; }
@@ -301,6 +559,103 @@
       </ul>
     </div>
   </div>
+</section>
+
+<!-- ── PRICING ── -->
+<section class="pricing" id="pricing">
+  <div class="pricing-header section-header">
+    <div class="section-eyebrow">Pricing</div>
+    <h2>Simple, transparent<br/>pricing.</h2>
+  </div>
+  <p class="pricing-subtext">No surprise invoices. No scope creep. Pick a plan that fits your stage and get straight to work — or reach out for a custom quote.</p>
+
+  <div class="billing-toggle">
+    <span class="active" id="monthlyLabel">PRICINGS</span>
+    <!-- <div class="toggle-switch" id="billingToggle" role="switch" aria-checked="false" tabindex="0">
+      <div class="toggle-knob"></div>
+    </div>
+    <span id="annualLabel">Annual</span> -->
+    <span class="save-badge">Save 20%</span>
+  </div>
+
+  <div class="pricing-grid">
+
+    <!-- Starter -->
+    <div class="plan-card">
+      <div class="plan-badge-spacer"></div>
+      <div class="plan-name">Starter</div>
+      <div class="plan-price">
+        <span class="plan-currency">₦</span>
+        <span class="plan-amount" data-monthly="200" data-annual="239">200k</span>
+        <span class="plan-period"></span>
+      </div>
+      <p class="plan-desc">Includes website setup and basic design without google listing.</p>
+      <ul class="plan-features">
+        <li><span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Up to 5-page website</li>
+        <li><span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Mobile-responsive design</li>
+        <li><span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Basic SEO setup</li>
+        <li><span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Contact form integration</li>
+        <li><span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Hosting & deployment</li>
+        <li><span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>1 revision round</li>
+        <li class="dim-feature"><span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Custom web application</li>
+        <li class="dim-feature"><span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Priority support</li>
+        <li class="dim-feature"><span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Google Listing</li>
+      </ul>
+      <button class="plan-cta outline open-contact">Contact Us</button>
+    </div>
+
+    <!-- Growth (Featured) -->
+    <div class="plan-card featured">
+      <div class="plan-badge">Most Popular</div>
+      <div class="plan-name">Growth</div>
+      <div class="plan-price">
+        <span class="plan-currency">₦</span>
+        <span class="plan-amount" data-monthly="699" data-annual="559">300K</span>
+        <span class="plan-period">/ mo</span>
+      </div>
+      <p class="plan-desc">Includes full UI/UX design with google listing .</p>
+      <ul class="plan-features">
+        <li><span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Up to 15-page website</li>
+        <li><span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Full UI/UX design (Figma)</li>
+        <li><span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Advanced SEO + monthly report</li>
+        <li><span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>CMS integration</li>
+        <li><span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>API & third-party integrations</li>
+        <li><span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>3 revision rounds</li>
+        <li><span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Post-launch support (30 days)</li>
+        <li class="dim-feature"><span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Custom web application</li>
+      </ul>
+      <button class="plan-cta primary open-contact">Contact Us</button>
+    </div>
+
+    <!-- Scale -->
+    <div class="plan-card">
+      <div class="plan-badge-spacer"></div>
+      <div class="plan-name">Scale</div>
+      <div class="plan-price">
+        <span class="plan-currency">₦</span>
+        <span class="plan-amount" data-monthly="1499" data-annual="1199">700K</span>
+        <span class="plan-period">/ mo</span>
+      </div>
+        <p class="plan-desc">Full online presence setup, including eCommerce development, website and google listing</p>
+        <ul class="plan-features">
+        <li><span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Unlimited pages</li>
+        <li><span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Custom web application</li>
+        <li><span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Full SEO strategy & management</li>
+        <li><span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>E-commerce integration</li>
+        <li><span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Performance & Core Web Vitals</li>
+        <li><span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Unlimited revisions</li>
+        <li><span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Priority support (90-day post-launch)</li>
+        <li><span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Dedicated project manager</li>
+      </ul>
+      <button class="plan-cta outline open-contact">Contact Us</button>
+    </div>
+
+  </div>
+
+  <p class="pricing-note">
+    All prices in USD. Need something outside these plans? <a href="#" class="open-contact">Let's talk custom.</a><br/>
+    Annual billing charged upfront. Monthly billing is cancel-anytime.
+  </p>
 </section>
 
 <section class="process">
@@ -404,7 +759,6 @@
       <div class="contact-value">Aval Inc</div>
     </div>
     </a>
-    
 
     <p class="modal-note">No commitment required — just tell us what you need<br/>and we'll take it from there.</p>
   </div>
@@ -420,7 +774,7 @@
       }
     })
   }, { threshold: 0.1 })
-  document.querySelectorAll('.service-card, .step').forEach(el => obs.observe(el))
+  document.querySelectorAll('.service-card, .step, .plan-card').forEach(el => obs.observe(el))
 
   // Modal open/close
   const modal = document.getElementById('contactModal')
@@ -455,6 +809,44 @@
         btn.classList.remove('copied')
       }, 2000)
     })
+  })
+
+  // Billing toggle
+  const toggle = document.getElementById('billingToggle')
+  const monthlyLabel = document.getElementById('monthlyLabel')
+  const annualLabel = document.getElementById('annualLabel')
+  const amounts = document.querySelectorAll('.plan-amount')
+  let isAnnual = false
+
+  function updatePrices() {
+    amounts.forEach(el => {
+      const val = isAnnual ? el.dataset.annual : el.dataset.monthly
+      // Animate number change
+      el.style.opacity = '0'
+      el.style.transform = 'translateY(6px)'
+      setTimeout(() => {
+        el.textContent = Number(val).toLocaleString()
+        el.style.opacity = '1'
+        el.style.transform = 'translateY(0)'
+      }, 150)
+    })
+    monthlyLabel.classList.toggle('active', !isAnnual)
+    annualLabel.classList.toggle('active', isAnnual)
+  }
+
+  // Apply transition style once
+  amounts.forEach(el => {
+    el.style.transition = 'opacity 0.15s ease, transform 0.15s ease'
+  })
+
+  toggle.addEventListener('click', () => {
+    isAnnual = !isAnnual
+    toggle.classList.toggle('on', isAnnual)
+    toggle.setAttribute('aria-checked', isAnnual)
+    updatePrices()
+  })
+  toggle.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle.click() }
   })
 </script>
 </body>

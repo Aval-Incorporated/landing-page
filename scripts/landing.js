@@ -1,16 +1,3 @@
-async function pageSwitch(page, el){
-    const pageData = await fetch(`pages/${page}.html`)
-    const textData = await pageData.text()
-    document.querySelector('.content').innerHTML = textData
-    window.scroll(0, 0)
-    el.classList.add('active')
-    if(page != 'home'){
-        document.querySelector('.fot').classList.add('hide')
-    }
-    else{
-        document.querySelector('.fot').classList.remove('hide')                
-    }
-} 
 function waitlist(){
     const jw = document.getElementById('JWaitlist')
 
@@ -33,28 +20,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     const navArr = Array.from(nav)
     const viewProd = document.querySelectorAll('.prod-btn')
     let viewProdArr = Array.from(viewProd)
-
-    navArr.forEach(el => {
-        el.addEventListener('click', async () => {
-            console.log(el)
-            let pageView = el.dataset.view
-            pageSwitch(pageView, el)
-            if(pageView == 'products'){
-                setTimeout(() => {waitlist()}, 200)
-            }
-            navArr.forEach(el => el.classList.remove('active'))
-            el.classList.add('active')
-        })
-    })
-
-    viewProdArr.forEach(el => {
-        el.addEventListener('click', () => {
-            navArr.forEach(el => el.classList.remove('active'))
-            const nav = document.querySelector('.prod')
-            pageSwitch('products', nav)
-            setTimeout(() => {waitlist()}, 200)
-        })
-    })
 
     document.getElementById('newsletterSub').addEventListener('submit', async (e) => {
         e.preventDefault()
